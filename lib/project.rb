@@ -6,11 +6,21 @@ class Project
   end
 
   def save
-    result = DB.exec("INSERT INTO projects (title) VALUES ('#{@title}') RETURNING id")
+    result = DB.exec("INSERT INTO projects (title) VALUES ('#{@title}') RETURNING id;")
     @id = result[0]["id"].to_i
   end
 
   def ==(another_project)
-  self.title().==(another_project.title())
-end
+    self.title().==(another_project.title())
+  end
+
+  def self.all
+    returned_projects = DB.exec("SELECT * FROM projects;")
+    projects = []
+    returned_projects.each() do |project|
+      title = project["title"]
+      projects.push(Project.new({:title => title}))
+    end
+    projects
+  end
 end
