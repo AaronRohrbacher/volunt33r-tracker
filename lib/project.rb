@@ -4,4 +4,9 @@ class Project
     @title = attributes[:title]
     @id = attributes[:id]
   end
+
+  def save
+    result = DB.exec("INSERT INTO projects (title) VALUES ('#{@title}') RETURNING id")
+    @id = result[0]["id"].to_i
+  end
 end
