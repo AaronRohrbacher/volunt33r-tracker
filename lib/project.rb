@@ -34,6 +34,12 @@ class Project
     projects[0]
   end
 
+  def update(attributes)
+    title = attributes["title"]
+    id = attributes["id"]
+    DB.exec("UPDATE projects SET title = #{title} WHERE id = #{self.id};")
+  end
+
   def volunteers
     returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{self.id};")
     project_volunteers = []
