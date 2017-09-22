@@ -1,0 +1,6 @@
+source 'https://rubygems.org'
+gem 'pry'
+gem 'sinatra'
+gem 'capybara'
+gem 'rspec'
+gem 'pg'
