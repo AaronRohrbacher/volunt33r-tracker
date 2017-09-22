@@ -18,7 +18,7 @@ class Volunteer
   def self.all
     returned_volunteers = DB.exec("SELECT * FROM volunteers;")
     volunteers = []
-    returned_vonlunteers.each() do |volunteer|
+    returned_volunteers.each() do |volunteer|
       name = volunteer["name"]
       project_id = volunteer["project_id"]
       volunteers.push(Volunteer.new({:name => name, :project_id => project_id}))
