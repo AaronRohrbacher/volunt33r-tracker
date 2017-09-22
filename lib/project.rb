@@ -1,4 +1,5 @@
 class Project
+
   attr_reader(:id, :title)
   def initialize(attributes)
     @title = attributes[:title]
