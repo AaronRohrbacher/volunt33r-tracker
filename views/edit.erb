@@ -1,4 +1,13 @@
-<form action = "/edit/<%= @project.id %>" method= "post">
+<form action = "/projects/<%= @project.id %>/edit" method= "post">
   <input type ="text" name= "title">
   <button type ="submit">Update Project</button>
 </form>
+
+<form action = "/projects/<%= @project.id %>/edit" method ="post">
+  <input name= "_method" type="hidden" value="delete">
+  <button type="submit">Delete Project</button>
+</form>
+
+<% if @delete %>
+<p>Project deleted</p>
+<% end %>

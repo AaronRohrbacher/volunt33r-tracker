@@ -28,14 +28,21 @@ get('/projects/:id') do
   erb(:projects)
 end
 
-get('/edit/:id') do
+get('/projects/:id/edit') do
   @project = Project.find(params.fetch("id"))
   erb(:edit)
 end
 
-post('/edit/:id') do
+post('/projects/:id/edit') do
   @project = Project.find(params.fetch("id"))
   new_title = params.fetch('title')
   @project.update(:title => new_title, :id => @project.id)
   erb(:projects)
+end
+
+delete('/projects/:id/edit') do
+  @project = Project.find(params.fetch("id"))
+  @project.delete
+  @delete = true
+  erb(:edit)
 end
