@@ -1,0 +1,8 @@
+<h1><%= @project.title %></h1>
+
+<p><a href = "/edit/<%= @project.id %>">Edit Project</a></p>
+
+<form action = "/projects/<%= @project.id %>" method= "post">
+  <input type ="text" name="title">
+  <button type="submit">Edit Project</button>
+</form>

@@ -5,5 +5,5 @@
 </form>
 
 <% @projects.each do |project| %>
-  <p><%= project.title %></p>
+  <p><a href ="/projects/<%= project.id %>"><%= project.title %></a></p>
 <% end %>

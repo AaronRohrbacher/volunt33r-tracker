@@ -20,7 +20,8 @@ class Project
     projects = []
     returned_projects.each() do |project|
       title = project["title"]
-      projects.push(Project.new({:title => title}))
+      id = project["id"].to_i
+      projects.push(Project.new({:title => title, :id => id}))
     end
     projects
   end
@@ -30,7 +31,8 @@ class Project
     projects = []
     returned_projects.each() do |project|
       title = project["title"]
-      projects.push(Project.new({:title => title}))
+      id = project["id"]
+      projects.push(Project.new({:title => title, :id => id}))
     end
     projects[0]
   end
