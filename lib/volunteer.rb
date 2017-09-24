@@ -12,7 +12,7 @@ class Volunteer
   end
 
   def update(attributes)
-    name = attributes[:title]
+    name = attributes[:name]
     id = attributes[:id]
     DB.exec("UPDATE volunteers SET name = '#{name}' WHERE id = #{self.id};")
     @name = name

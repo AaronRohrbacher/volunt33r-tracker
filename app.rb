@@ -53,17 +53,31 @@ delete('/projects/:id/edit') do
   erb(:edit)
 end
 
-get('/projects/:id/edit/volunteers') do
-  @volunteer = Volunteer.find(params.fetch("id"))
-
+get('/projects/:id/edit/volunteers/:volunteer_id') do
+  @volunteer = Volunteer.find(params.fetch("volunteer_id"))
+  @project = Project.find(params.fetch("id"))
   erb(:volunteer_edit)
 end
 
 post('/projects/:id/edit/volunteers') do
   name = params.fetch('name')
-  project_id = params.fetch('project_id')
+  project_id = params.fetch('id')
   volunteer = Volunteer.new({:name => name, :project_id => project_id})
   volunteer.save
   @project = Project.find(params.fetch("id"))
-  erb(:volunteer_edit)
+
+  project_volunteers = Project.new({:title => nil, :id => params.fetch('id').to_i})
+  @volunteers_project = project_volunteers.volunteers
+  erb(:projects)
+end
+
+post('/projects/edit/:id/volunteers/update/:volunteer_id') do
+  @volunteer = Volunteer.find(params.fetch('volunteer_id'))
+  @volunteer.update(:name => params.fetch('name'), :id => @volunteer.id.to_i)
+
+  @project = Project.find(params.fetch("id"))
+  project_volunteers = Project.new({:title => nil, :id => params.fetch('id').to_i})
+  @volunteers_project = project_volunteers.volunteers
+
+  erb(:projects)
 end

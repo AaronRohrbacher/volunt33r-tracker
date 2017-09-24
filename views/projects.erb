@@ -3,7 +3,7 @@
 <p><a href = "/projects/<%= @project.id %>/edit">Edit Project</a></p>
 
 <% @volunteers_project.each do |volunteer| %>
-<p><a href ="/projects/<%= @project.id %>/edit/volunteers"><%= volunteer.name %></a></p>
+<p><a href ="/projects/<%= @project.id %>/edit/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></p>
 <% end %>
 
 <h2>Add Volunteer:</h2>
